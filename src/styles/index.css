@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-obsidian: #090909;
+    --text-warm-white: #F4F2EC;
+    --accent-acid-lime: #C6FF4D;
+  }
+
+  body {
+    background-color: var(--bg-obsidian);
+    color: var(--text-warm-white);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #C6FF4D;
+    outline-offset: 3px;
+  }
+}
+
+/* Subtle architectural grid pattern */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+}
+
+/* Technical scanline highlight */
+.scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Monospace technical tag styling */
+.tech-tag {
+  @apply font-mono text-xs uppercase tracking-wider px-2.5 py-1 rounded-sm border border-white/10 bg-white/[0.02] text-metadata-light;
+}
+
+.tech-tag-lime {
+  @apply font-mono text-xs uppercase tracking-wider px-2.5 py-1 rounded-sm border border-acid-lime/30 bg-acid-lime/10 text-acid-lime;
+}
+
+/* Custom glow utility */
+.lime-glow {
+  box-shadow: 0 0 35px -5px rgba(198, 255, 77, 0.25);
+}
+
+.lime-glow-subtle {
+  box-shadow: 0 0 20px -5px rgba(198, 255, 77, 0.15);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
